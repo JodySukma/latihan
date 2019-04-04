@@ -1,0 +1,109 @@
+﻿@{
+    Layout = null;
+}
+
+@functions{
+    string HelloWorld()
+    {
+        return "Hello Wolrd";
+    }
+}
+
+@{
+    var output = "Hellow World"; 
+}
+
+@{
+    var nama = "Budi";
+    <p>Hello @nama</p>
+}
+
+@for(var i = 1; i <= 5; i++)
+{
+    <p>Bilangan : @i</p>
+}
+
+@{var value = 5;}
+
+@if(value % 2 == 0)
+{
+    <p>Bilangan Genap</p>
+}else if(value >= 11)
+{
+    <p>Bilangan lebih besar dari pada 11</p>
+}else{
+    <p>Bilangan lebih kecil dari 11 dan ganjil</p>
+}
+
+@switch(value)
+{
+    case 1 :
+            <p>Nilai adalah 1</p>
+            break;
+    case 10 :
+            <p>Nilai adalah 10 !</p>
+            break;
+    default :
+            <p>Nilai bukan 1 atau 10.</p>
+            break;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="witdh=device-witdh" />
+    <title>Latihan</title>
+</head>
+<body>
+    <h1>Latihan</h1>
+    <h2>Ekspresi Implisit</h2>
+    <p>@DateTime.Now</p>
+    <p>@DateTime.IsLeapYear(2016)</p>
+    <p>@DateTime.IsLeapYear(2017)</p>
+    <p>@HelloWorld()</p>
+
+    <h2>Ekpresi eksplisit</h2>
+    <p>Last week this time: @(DateTime.Now - TimeSpan.FromDays(7))</p>
+    ("<span>Hellow Wolrd</span>")
+
+    <h2>Block Kode</h2>
+    <p>Nilai variable @@output : @output</p>
+
+    <h2>Pengulangan</h2>
+    @{
+        string [] names = new string [3];
+        names[0] = "Iwan";
+        names[1] = "Budi";
+        names[2] = "Yanto";
+    }
+    <h3>@@for</h3>
+    @for(int i = 0; i < names.Length; i++)
+    {
+        <text>@names[i] &nbsp;</text>
+    }
+
+    <h3>@@foreach</h3>
+    @foreach(var name in names)
+    {
+        <text>@name &nbsp;</text>
+    }
+
+    <h3>@@while</h3>
+    @{var j = 0;}
+    @while (j < names.Length)
+    {
+        <text>@names[j] &nbsp;</text>
+        j++;
+    }
+
+    <h3>@@do while</h3>
+    @{ var k = 0; }
+    @do
+    {
+        <text>@names[k] &nbsp;</text>
+    }while(k < names.Length);
+</body>
+</html>
+
+
